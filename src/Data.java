@@ -49,9 +49,11 @@ public class Data {
             else
                 return false;
 
-        if (ano%400 == 0)             return false;
-        if (ano%4 == 0 && ano%100 == 0) return false;
-        return true;
+        if (ano%4 != 0 && ano%400 == 0) return true;
+
+        if (ano%4 == 0 && ano%100 != 0) return true;
+
+        return false;
     }
 
     private boolean isValida (byte dia, byte mes, short ano)
@@ -76,8 +78,39 @@ public class Data {
         return dia + "/" + mes + "/" + ano;
     }
 
-    public void torneSeODiaSeguinte(){
+    public void torneSeODiaSeguinte() throws Exception {
 
+        if (isValida((byte) (this.dia + 1), this.mes, this.ano)) {
+            System.out.println("entrou dia");
+            this.setDia((byte) (this.dia + 1));
+            return;
+        }
+
+        if (!isValida((byte) (this.dia + 1), this.mes, this.ano)) {
+            System.out.println("entrou ultimo dia");
+            if (!isValida((byte) 1, (byte) (this.mes + 1), this.ano)) {
+                System.out.println("entrou ultimo mes");
+                anoNovo();
+                return;
+            }
+            this.setDia((byte) 1);
+            this.setMes((byte) (this.mes + 1));
+            return;
+        }
+
+        anoNovo();
+        return;
+    }
+
+    private void anoNovo() throws Exception {
+        if(this.ano == -1) {
+            this.setAno((short) 1);
+        }
+        else this.setAno((short) (this.ano + 1));
+
+        this.setDia((byte) 1);
+        this.setMes((byte) 1);
+        return;
     }
 
 }
