@@ -97,9 +97,6 @@ public class Data {
             this.setMes((byte) (this.mes + 1));
             return;
         }
-
-        anoNovo();
-        return;
     }
 
     private void anoNovo() throws Exception {
