@@ -82,9 +82,9 @@ public class Data {
 
     public void torneSeODiaSeguinte() throws Exception {
 
-        if (isValida((byte) (this.dia + 1), this.mes, this.ano)) {
-            System.out.println("entrou dia");
-            this.setDia((byte) (this.dia + 1));
+        if(this.dia == 4 && this.mes == 10 && this.ano == 1582){
+            System.out.println("entrou 1582");
+            this.setDia((byte) 15);
             return;
         }
 
@@ -98,6 +98,7 @@ public class Data {
             this.setDia((byte) 1);
             this.setMes((byte) (this.mes + 1));
         }
+        this.setDia((byte) (this.dia + 1));
     }
 
     private void anoNovo() throws Exception {
