@@ -43,6 +43,7 @@ public class Data {
 
     private boolean isBissexto (short ano)
     {
+        //verifica se um ano é bissexto
         if (ano<1583)
             if (ano%4 == 0)
                 return true;
@@ -58,6 +59,7 @@ public class Data {
 
     private boolean isValida (byte dia, byte mes, short ano)
     {
+        //verifica a validez de qualquer data
         if (dia<1 || dia>31) return false;
         if (mes<1 || mes>12) return false;
         if (ano==0)          return false;
@@ -82,16 +84,16 @@ public class Data {
 
     public void torneSeODiaSeguinte() throws Exception {
 
+        //mudança para o calendário gregoriano
         if(this.dia == 4 && this.mes == 10 && this.ano == 1582){
-            System.out.println("entrou 1582");
             this.setDia((byte) 15);
             return;
         }
 
+        //caso seja o último dia do mês
         if (!isValida((byte) (this.dia + 1), this.mes, this.ano)) {
-            System.out.println("entrou ultimo dia");
+            //caso seja o último mês do ano
             if (!isValida((byte) 1, (byte) (this.mes + 1), this.ano)) {
-                System.out.println("entrou ultimo mes");
                 anoNovo();
                 return;
             }
@@ -102,10 +104,10 @@ public class Data {
         this.setDia((byte) (this.dia + 1));
     }
 
+
     private void anoNovo() throws Exception {
-        if(this.ano == -1) {
-            this.setAno((short) 1);
-        }
+        //caso a torneSeODiaSeguinte seja chamada para o último dia de um ano
+        if(this.ano == -1) this.setAno((short) 1);
         else this.setAno((short) (this.ano + 1));
 
         this.setDia((byte) 1);
