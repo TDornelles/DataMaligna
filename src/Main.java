@@ -3,7 +3,7 @@ public class Main {
     public static void main (String[] args){
 
         try {
-            Data data = new Data((byte) 4, (byte) 10, (short) 1582);
+            Data data = new Data((byte) 31, (byte) 10, (short) 2020);
             System.out.println(data);
             data.torneSeODiaSeguinte();
             System.out.println(data);

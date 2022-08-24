@@ -97,6 +97,7 @@ public class Data {
             }
             this.setDia((byte) 1);
             this.setMes((byte) (this.mes + 1));
+            return;
         }
         this.setDia((byte) (this.dia + 1));
     }
