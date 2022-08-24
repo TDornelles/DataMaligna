@@ -75,7 +75,9 @@ public class Data {
 
     @Override
     public String toString(){
-        return dia + "/" + mes + "/" + ano;
+        return (this.dia < 10?"0":"") + this.dia +
+                "/" + (this.mes < 10?"0":"") + this.mes
+                + "/" + ano;
     }
 
     public void torneSeODiaSeguinte() throws Exception {
