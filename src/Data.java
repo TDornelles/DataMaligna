@@ -97,11 +97,7 @@ public class Data {
             }
             this.setDia((byte) 1);
             this.setMes((byte) (this.mes + 1));
-            return;
         }
-
-        anoNovo();
-        return;
     }
 
     private void anoNovo() throws Exception {
@@ -112,7 +108,6 @@ public class Data {
 
         this.setDia((byte) 1);
         this.setMes((byte) 1);
-        return;
     }
 
 }
