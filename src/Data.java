@@ -44,17 +44,13 @@ public class Data {
     private boolean isBissexto (short ano)
     {
         //verifica se um ano é bissexto
-        if (ano<1583)
-            if (ano%4 == 0)
-                return true;
-            else
-                return false;
+        if (ano<1583) {
+            return ano % 4 == 0;
+        }
 
         if (ano%4 != 0 && ano%400 == 0) return true;
 
-        if (ano%4 == 0 && ano%100 != 0) return true;
-
-        return false;
+        return ano % 4 == 0 && ano % 100 != 0;
     }
 
     private boolean isValida (byte dia, byte mes, short ano)
@@ -106,7 +102,7 @@ public class Data {
 
 
     private void anoNovo() throws Exception {
-        //caso a torneSeODiaSeguinte seja chamada para o último dia de um ano
+        //torna a data o primeiro dia do ano seguinte
         if(this.ano == -1) this.setAno((short) 1);
         else this.setAno((short) (this.ano + 1));
 
