@@ -121,4 +121,17 @@ public class Data {
 
         return true;
     }
+
+    @Override
+    public int hashCode () {
+        int ret  = 666; // um numero natural >0 qualquer
+
+        ret = 13*ret + new Byte (this.dia).hashCode();
+        ret = 13*ret + new Byte (this.mes).hashCode();
+        ret = 13*ret + new Short (this.ano).hashCode();
+
+        if (ret < 0) ret = -ret;
+
+        return ret;
+    }
 }
